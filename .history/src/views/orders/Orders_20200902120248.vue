@@ -1,0 +1,96 @@
+<template>
+  <!--订单列表-->
+  <div>
+  <el-table
+    :data="power"
+    border
+    style="width: 100%">
+    <el-table-column
+      type="index"
+      :index="indexMethod" align="center"
+      label="日期" 
+      width="180">
+    </el-table-column>
+    <el-table-column
+      prop="order_number"
+      label="姓名"
+      width="180">
+    </el-table-column>
+    <el-table-column
+      prop="order_price"
+      label="地址">
+    </el-table-column>
+  </el-table>
+  
+  </div>
+</template>
+
+<script>
+import { createNamespacedHelpers } from "vuex";
+const userModule = createNamespacedHelpers("management");
+const { mapState, mapActions } = userModule
+export default {
+  name: "",
+  props: {},
+  data() {
+    return {
+      pagesize: 10,
+      query: "",
+      pagenum: 1,
+      user_id: "",
+      pay_status: "",
+      is_send: "",
+      order_fapiao_title: "",
+      order_fapiao_company: "",
+      order_fapiao_content: "",
+      consignee_addr: "",
+         tableData: [{
+          date: '2016-05-02',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-04',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1517 弄'
+        }, {
+          date: '2016-05-01',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1519 弄'
+        }, {
+          date: '2016-05-03',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1516 弄'
+        }]
+    };
+  },
+  components: {},
+  methods: {
+      //获取下标
+     indexMethod(index){
+       return index*1+1
+     },
+       ...mapActions(['getOrderss']),
+  },
+  mounted() {
+    this.getOrderss({
+      pagesize: this.pagesize,
+      // query: this.query,
+      pagenum: this.pagenum,
+      // user_id: this.user_id,
+      // pay_status: this.pay_status,
+      // is_send: this.is_send,
+      // order_fapiao_title: this.order_fapiao_title,
+      // order_fapiao_company: this.order_fapiao_company,
+      // order_fapiao_content: this.order_fapiao_content,
+      // consignee_addr: this.consignee_addr,
+    });
+  },
+  watch: {},
+  computed: {
+    ...mapState(['power'])
+  }
+};
+</script>
+
+<style scoped lang='scss'>
+</style>

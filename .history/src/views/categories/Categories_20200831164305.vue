@@ -1,0 +1,39 @@
+<template>
+<!--商品分类-->
+ <div>
+categories
+ </div>
+</template>
+
+<script>
+ export default {
+   name:'',
+   props:{
+
+    },
+   data () {
+     return {
+
+   }
+   },
+   components: {
+
+   },
+   methods: {
+
+   },
+   mounted() {
+
+   },
+   watch: {
+
+   },
+   computed: {
+
+   }
+ }
+</script>
+
+<style scoped lang='scss'>
+
+</style>
